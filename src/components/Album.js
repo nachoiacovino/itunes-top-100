@@ -1,6 +1,20 @@
-import { Media } from 'react-bootstrap';
+import { Button, Media } from 'react-bootstrap';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+
+import { addAlbumToFavorites, removeAlbumFromFavorites } from '../redux/albums/albumsActions';
 
 const Album = ({ album }) => {
+  const dispatch = useDispatch();
+  /*   const favorites  */
+
+  const handleFavorite = (action) => {
+    const albumId = album.id.attributes['im:id'];
+
+    if (action === 'ADD') dispatch(addAlbumToFavorites(albumId));
+    else if (action === 'REMOVE') dispatch(removeAlbumFromFavorites(albumId));
+  };
+
   return (
     <>
       <hr />
@@ -18,6 +32,12 @@ const Album = ({ album }) => {
         <Media.Body>
           <h5 className=''>{album['im:name'].label}</h5>
           <p className='mb-0'>{album['im:artist'].label}</p>
+          <Button onClick={() => handleFavorite('ADD')}>
+            <AiOutlineStar />
+          </Button>
+          <Button onClick={() => handleFavorite('REMOVE')}>
+            <AiFillStar />
+          </Button>
         </Media.Body>
       </Media>
     </>
