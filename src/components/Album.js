@@ -1,6 +1,7 @@
 import { Button, Media } from 'react-bootstrap';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { addAlbumToFavorites, removeAlbumFromFavorites } from '../redux/albums/albumsActions';
 
@@ -28,7 +29,9 @@ const Album = ({ album }) => {
           alt='Generic placeholder'
         />
         <Media.Body>
-          <h5 className=''>{album['im:name'].label}</h5>
+          <Link to={`/album/${album.id.attributes['im:id']}`}>
+            <h5>{album['im:name'].label}</h5>
+          </Link>
           <p className='mb-0'>{album['im:artist'].label}</p>
         </Media.Body>
         {album.favorite ? (
