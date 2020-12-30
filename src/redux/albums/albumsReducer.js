@@ -1,4 +1,4 @@
-import { ADD_ALBUM_TO_FAVORITES, GET_ALBUMS_SUCCESS, REMOVE_ALBUM_FROM_FAVORITES } from './albumsTypes';
+import { ADD_ALBUM_TO_FAVORITES, GET_ALBUMS_FAIL, GET_ALBUMS_SUCCESS, REMOVE_ALBUM_FROM_FAVORITES } from './albumsTypes';
 
 const initialState = {
   albums: [],
@@ -18,6 +18,12 @@ const albums = (state = initialState, { type, payload }) => {
           favorite: state.favorites.includes(album.id.attributes['im:id']),
         })),
         error: false,
+        loading: false,
+      };
+    case GET_ALBUMS_FAIL:
+      return {
+        ...state,
+        error: payload,
         loading: false,
       };
     case ADD_ALBUM_TO_FAVORITES:

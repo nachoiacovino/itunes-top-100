@@ -3,6 +3,8 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Album from '../components/Album';
+import Error from '../components/Error';
+import Loading from '../components/Loading';
 import SearchBox from '../components/SearchBox';
 import { getAlbumsStart } from '../redux/albums/albumsActions';
 
@@ -13,6 +15,8 @@ const Albums = () => {
 
   const dispatch = useDispatch();
   const albums = useSelector(({ albums }) => albums.albums);
+  const loading = useSelector(({ albums }) => albums.loading);
+  const error = useSelector(({ albums }) => albums.error);
   const onSearchChange = (e) => setTerm(e.target.value);
 
   useEffect(() => {
@@ -36,6 +40,9 @@ const Albums = () => {
       setFilteredAlbums(albums);
     }
   }, [albums, seeFavorites]);
+
+  if (error) return <Error>{error.message}</Error>;
+  if (loading) return <Loading />;
 
   return (
     <Container>
