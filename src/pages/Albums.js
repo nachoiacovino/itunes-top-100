@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Album from '../components/Album';
@@ -9,6 +9,7 @@ import { getAlbumsStart } from '../redux/albums/albumsActions';
 const Albums = () => {
   const [term, setTerm] = useState('');
   const [filteredAlbums, setFilteredAlbums] = useState([]);
+  const [seeFavorites, setSeeFavorites] = useState(false);
 
   const dispatch = useDispatch();
   const albums = useSelector(({ albums }) => albums.albums);
@@ -28,9 +29,29 @@ const Albums = () => {
     );
   }, [albums, term]);
 
+  useEffect(() => {
+    if (seeFavorites) {
+      setFilteredAlbums(albums.filter((album) => album.favorite));
+    } else {
+      setFilteredAlbums(albums);
+    }
+  }, [albums, seeFavorites]);
+
   return (
     <Container>
-      <h1 className='mt-3'>Albums</h1>
+      <Row>
+        <Col xs={10}>
+          <h1 className='mt-3'>Albums</h1>
+        </Col>
+        <Col className='d-flex align-items-end'>
+          {seeFavorites ? (
+            <Button onClick={() => setSeeFavorites(false)}>See all</Button>
+          ) : (
+            <Button onClick={() => setSeeFavorites(true)}>See favorites</Button>
+          )}
+        </Col>
+      </Row>
+
       <hr />
       <SearchBox onSearchChange={onSearchChange} />
       {filteredAlbums.map((album) => (
