@@ -36,7 +36,7 @@ const AlbumDetail = () => {
         </Col>
         <Col xs={12} md={9}>
           <h1>{album['im:name'].label}</h1>
-          <h2>{album['im:artist'].label}</h2>
+          <h3>{album['im:artist'].label}</h3>
           <p className='m-0'>Price: {album['im:price'].label}</p>
           <p className='mt-0'>
             Release date: {formatDate(album['im:releaseDate'].label)}{' '}
