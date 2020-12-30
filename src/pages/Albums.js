@@ -46,11 +46,11 @@ const Albums = () => {
 
   return (
     <Container>
-      <Row>
-        <Col xs={10}>
-          <h1 className='mt-3'>Albums</h1>
+      <Row className='mt-3'>
+        <Col>
+          <h1>Albums</h1>
         </Col>
-        <Col className='d-flex align-items-end'>
+        <Col className='d-flex align-items-center justify-content-end'>
           {seeFavorites ? (
             <Button onClick={() => setSeeFavorites(false)}>See all</Button>
           ) : (
