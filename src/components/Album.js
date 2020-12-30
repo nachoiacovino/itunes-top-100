@@ -30,16 +30,16 @@ const Album = ({ album }) => {
         <Media.Body>
           <h5 className=''>{album['im:name'].label}</h5>
           <p className='mb-0'>{album['im:artist'].label}</p>
-          {album.favorite ? (
-            <Button onClick={() => handleFavorite('REMOVE')}>
-              <AiFillStar />
-            </Button>
-          ) : (
-            <Button onClick={() => handleFavorite('ADD')}>
-              <AiOutlineStar />
-            </Button>
-          )}
         </Media.Body>
+        {album.favorite ? (
+          <Button variant='link' onClick={() => handleFavorite('REMOVE')}>
+            <AiFillStar />
+          </Button>
+        ) : (
+          <Button variant='link' onClick={() => handleFavorite('ADD')}>
+            <AiOutlineStar />
+          </Button>
+        )}
       </Media>
     </>
   );
