@@ -33,8 +33,8 @@ const Albums = () => {
       <h1 className='mt-3'>Albums</h1>
       <hr />
       <SearchBox onSearchChange={onSearchChange} />
-      {filteredAlbums.map((album, idx) => (
-        <Album key={album.id.attributes['im:id']} album={album} idx={idx} />
+      {filteredAlbums.map((album) => (
+        <Album key={album.id.attributes['im:id']} album={album} />
       ))}
     </Container>
   );

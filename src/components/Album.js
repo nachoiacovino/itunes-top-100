@@ -6,8 +6,6 @@ import { addAlbumToFavorites, removeAlbumFromFavorites } from '../redux/albums/a
 
 const Album = ({ album }) => {
   const dispatch = useDispatch();
-  /*   const favorites  */
-
   const handleFavorite = (action) => {
     const albumId = album.id.attributes['im:id'];
 
@@ -32,12 +30,15 @@ const Album = ({ album }) => {
         <Media.Body>
           <h5 className=''>{album['im:name'].label}</h5>
           <p className='mb-0'>{album['im:artist'].label}</p>
-          <Button onClick={() => handleFavorite('ADD')}>
-            <AiOutlineStar />
-          </Button>
-          <Button onClick={() => handleFavorite('REMOVE')}>
-            <AiFillStar />
-          </Button>
+          {album.favorite ? (
+            <Button onClick={() => handleFavorite('REMOVE')}>
+              <AiFillStar />
+            </Button>
+          ) : (
+            <Button onClick={() => handleFavorite('ADD')}>
+              <AiOutlineStar />
+            </Button>
+          )}
         </Media.Body>
       </Media>
     </>
