@@ -1,12 +1,12 @@
 import { Media } from 'react-bootstrap';
 
-const Album = ({ album, idx }) => {
+const Album = ({ album }) => {
   return (
     <>
       <hr />
       <Media className='mb-1'>
         <div className='w-60 d-flex justify-content-center'>
-          <h5 className='p-3'>{idx + 1}.</h5>
+          <h5 className='p-3'>{album.rank}.</h5>
         </div>
         <img
           src={album['im:image'][0].label}

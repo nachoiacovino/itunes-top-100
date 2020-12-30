@@ -11,7 +11,7 @@ const albums = (state = initialState, { type, payload }) => {
     case GET_ALBUMS_SUCCESS:
       return {
         ...state,
-        albums: payload,
+        albums: payload.map((album, idx) => ({ ...album, rank: idx + 1 })),
         error: false,
         loading: false,
       };
