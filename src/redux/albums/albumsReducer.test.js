@@ -48,28 +48,28 @@ fdescribe('albumsReducer', () => {
     });
   });
 
-  it('should handle ADD_ALBUM_TO_FAVORITES', () => {
-    const initialStateAlbums = {
-      ...initialState,
-      albums: [
-        {
-          id: { attributes: { 'im:id': 23 } },
-          'im:name': { label: 'Test album' },
-          'im:artist': { label: 'Artist 1' },
-          rank: 1,
-          favorite: false,
-        },
-        {
-          id: { attributes: { 'im:id': 67 } },
-          'im:name': { label: 'Second album' },
-          'im:artist': { label: 'Another artist' },
-          rank: 2,
-          favorite: true,
-        },
-      ],
-      favorites: [67],
-    };
+  const initialStateAlbums = {
+    ...initialState,
+    albums: [
+      {
+        id: { attributes: { 'im:id': 23 } },
+        'im:name': { label: 'Test album' },
+        'im:artist': { label: 'Artist 1' },
+        rank: 1,
+        favorite: false,
+      },
+      {
+        id: { attributes: { 'im:id': 67 } },
+        'im:name': { label: 'Second album' },
+        'im:artist': { label: 'Another artist' },
+        rank: 2,
+        favorite: true,
+      },
+    ],
+    favorites: [67],
+  };
 
+  it('should handle ADD_ALBUM_TO_FAVORITES', () => {
     expect(
       albumsReducer(initialStateAlbums, {
         type: ADD_ALBUM_TO_FAVORITES,
@@ -98,29 +98,6 @@ fdescribe('albumsReducer', () => {
   });
 
   it('should handle REMOVE_ALBUM_FROM_FAVORITES', () => {
-    const initialStateAlbums = {
-      ...initialState,
-      albums: [
-        {
-          id: { attributes: { 'im:id': 23 } },
-          'im:name': { label: 'Test album' },
-          'im:artist': { label: 'Artist 1' },
-          rank: 1,
-          favorite: false,
-        },
-        {
-          id: { attributes: { 'im:id': 67 } },
-          'im:name': { label: 'Second album' },
-          'im:artist': { label: 'Another artist' },
-          rank: 2,
-          favorite: true,
-        },
-      ],
-      favorites: [67],
-    };
-
-    console.log(initialStateAlbums);
-
     expect(
       albumsReducer(initialStateAlbums, {
         type: REMOVE_ALBUM_FROM_FAVORITES,
