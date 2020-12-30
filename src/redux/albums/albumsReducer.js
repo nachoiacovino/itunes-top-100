@@ -2,7 +2,7 @@ import { ADD_ALBUM_TO_FAVORITES, GET_ALBUMS_FAIL, GET_ALBUMS_SUCCESS, REMOVE_ALB
 
 const initialState = {
   albums: [],
-  favorites: ['asassa', 'asad82'],
+  favorites: [],
   loading: true,
   error: null,
 };
