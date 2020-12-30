@@ -2,14 +2,14 @@ import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getSongsStart } from './redux/songs/songsActions';
+import { getAlbumsStart } from './redux/albums/albumsActions';
 
 const App = () => {
   const dispatch = useDispatch();
-  const songs = useSelector(({ songs }) => songs.songs);
+  const albums = useSelector(({ albums }) => albums.albums);
 
   useEffect(() => {
-    dispatch(getSongsStart());
+    dispatch(getAlbumsStart());
   }, [dispatch]);
 
   return (

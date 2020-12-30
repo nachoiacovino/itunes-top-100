@@ -1,3 +1,0 @@
-export const GET_SONGS_START = 'GET_SONGS_START';
-export const GET_SONGS_SUCCESS = 'GET_SONGS_SUCCESS';
-export const GET_SONGS_FAIL = 'GET_SONGS_FAIL';

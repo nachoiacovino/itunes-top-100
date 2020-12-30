@@ -1,7 +1,7 @@
 import { all, call } from 'redux-saga/effects';
 
-import songsSagas from './songs/songsSagas';
+import albumsSagas from './albums/albumsSagas';
 
 export default function* rootSaga() {
-  yield all([call(songsSagas)]);
+  yield all([call(albumsSagas)]);
 }
