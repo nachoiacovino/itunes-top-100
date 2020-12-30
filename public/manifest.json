@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "iTunes top 100 albums",
+  "name": "iTunes top 100 albums",
   "icons": [
     {
       "src": "favicon.ico",
