@@ -3,7 +3,10 @@ import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import Error from '../components/Error';
+import Loading from '../components/Loading';
 import { getAlbumsStart } from '../redux/albums/albumsActions';
+import NotFound from './NotFound';
 
 const AlbumDetail = () => {
   const dispatch = useDispatch();
@@ -11,6 +14,8 @@ const AlbumDetail = () => {
   const album = useSelector(({ albums }) =>
     albums.albums.find((album) => album.id.attributes['im:id'] === params.id),
   );
+  const loading = useSelector(({ albums }) => albums.loading);
+  const error = useSelector(({ albums }) => albums.error);
 
   useEffect(() => {
     dispatch(getAlbumsStart());
@@ -18,6 +23,10 @@ const AlbumDetail = () => {
 
   const formatDate = (date) =>
     new Intl.DateTimeFormat('en-GB').format(new Date(date));
+
+  if (error) return <Error>{error.message}</Error>;
+  if (loading) return <Loading />;
+  if (!album) return <NotFound />;
 
   return (
     <Container className='mt-3'>
